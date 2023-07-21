@@ -1,0 +1,280 @@
+<div class="card">
+    <div class="card-header" style="background-color: #828d98;">
+        <span style="color:white">Echannel Verification Form</span>
+    </div>
+<div>
+    <mat-card class="parent_card">
+        <mat-card-header style=" padding-bottom: 5px;">
+            <span *ngIf="assignedId =='assigned'">
+            <div class="row">
+            <div class="col-6">
+            <button type="button" (click)='proceedHandle()' style=" padding: 5px 12px;background-color:  #17bbed;border-color: white;"  class="btn btn-sm btn-primary" ><i class="fa fa-dot-circle-o"></i> Proceed</button>
+            </div>
+            <div class="col-6">
+            <button type="button" (click)='rejectHandle()' style=" padding: 5px 12px;background-color:#ed7117;border-color: white;margin:0% 1%  ;"  class="btn btn-sm btn-primary" ><i class="fa fa-dot-circle-o"></i> Reject</button>
+            </div>
+            </div>
+            </span>
+            <span *ngIf="assignedId =='new'">
+            <div class="row">
+            <div class="col-6">
+             <button type="button" (click)='proceedHandle()' disabled style=" padding: 5px 12px;background-color:  #17bbed;border-color: white;"  class="btn btn-sm btn-primary" ><i class="fa fa-dot-circle-o"></i> Proceed</button>
+            </div>
+            <div class="col-6">
+            <button type="button" (click)='rejectHandle()' disabled style=" padding: 5px 12px;background-color:#ed7117;border-color: white;margin:0% 1%  ;"  class="btn btn-sm btn-primary" ><i class="fa fa-dot-circle-o"></i> Reject</button>
+            </div>
+            </div> 
+            </span>
+        </mat-card-header>
+        <mat-card-content style="margin: 5px;">
+            <div class="row">
+                <div class="col-6"> 
+                    <mat-card style="border: 1px solid #00000026;">
+                        <mat-card-header style=" padding-bottom: 5px;"><strong>Echannel Verification</strong></mat-card-header>
+                        <mat-card-content style="margin: 5px;">
+                            
+                            <form [formGroup]="userData" (ngSubmit)="onSubmit()">
+                                <mat-card style="margin-top: 10px;">
+                                    <mat-card-subtitle style="margin-left: 10px;margin-top: 7px;"><strong>Document</strong></mat-card-subtitle>
+                                    <mat-card-content>
+                                        <div class='row'>
+                                            <div class="form-group col-12">
+                                                <label >Reference</label>
+                                                <input 
+                                                    type="text"
+                                                    name="reference" 
+                                                    class="form-control"
+                                                    placeholder="enter reference.." 
+                                                    autocomplete="reference"
+                                                    formControlName="reference"
+                                                    [readonly]="true"
+                                                />
+                                            </div>
+                                            </div>
+                                    </mat-card-content>
+                                </mat-card>
+                                <mat-card style="margin-top: 10px;">
+                                    <mat-card-subtitle style="margin-left: 10px;margin-top: 7px;"><strong>Transfer Details</strong></mat-card-subtitle>
+                                    <mat-card-content>
+                                        <div class='row'>
+                                            <div class="form-group col-6">
+                                                <label >Currency</label>
+                                                <input 
+                                                    type="text"
+                                                    name="currency" 
+                                                    class="form-control"
+                                                    placeholder="enter currency.." 
+                                                    autocomplete="currency"
+                                                    formControlName="currency"
+                                                    [readonly]="true"
+                                                />
+                                            </div>
+                                            <div class="form-group col-6">
+                                                <label >Amount</label>
+                                                <input 
+                                                    type="text"
+                                                    name="amount" 
+                                                    class="form-control"
+                                                    placeholder="enter reference.." 
+                                                    autocomplete="amount"
+                                                    formControlName="amount"
+                                                    [readonly]="true"
+                                                />
+                                            </div>
+                                        </div>
+                                    </mat-card-content>
+                                </mat-card>
+                                <mat-card style="margin-top: 10px;">
+                                    <mat-card-subtitle style="margin-left: 10px;margin-top: 7px;"><strong>Debit Amount Details</strong></mat-card-subtitle>
+                                    <mat-card-content>
+                                        <div class='row'>
+                                            <div class="form-group col-6">
+                                                <label >Account No</label>
+                                                <input 
+                                                    type="text"
+                                                    name="accountNo" 
+                                                    class="form-control"
+                                                    placeholder="enter accountNo.." 
+                                                    autocomplete="accountNo"
+                                                    formControlName="accountNo"
+                                                    [readonly]="true"
+                                                />
+                                            </div>
+                                            <div class="form-group col-6">
+                                                <label >Currency</label>
+                                                <input 
+                                                    type="text"
+                                                    name="debitCurrency" 
+                                                    class="form-control"
+                                                    placeholder="enter reference.." 
+                                                    autocomplete="debitCurrency"
+                                                    formControlName="debitCurrency"
+                                                    [readonly]="true"
+                                                />
+                                            </div>
+                                        </div>
+                                        <div class='row'>
+                                            <div class="form-group col-12">
+                                                <label >Name</label>
+                                                <input 
+                                                    type="text"
+                                                    name="debitName" 
+                                                    class="form-control"
+                                                    placeholder="enter accountNo.." 
+                                                    autocomplete="debitName"
+                                                    formControlName="debitName"
+                                                    [readonly]="true"
+                                                />
+                                            </div>
+                                        </div>
+                                    </mat-card-content>
+                                </mat-card>
+                                <mat-card style="margin-top: 10px;">
+                                    <mat-card-subtitle style="margin-left: 10px;margin-top: 7px;"><strong>Beneficiary Details</strong></mat-card-subtitle>
+                                    <mat-card-content>
+                                        
+                                        <div class='row'>
+                                            <div class="form-group col-12">
+                                                <label >Name</label>
+                                                <input 
+                                                    type="text"
+                                                    name="beneficiaryName" 
+                                                    class="form-control"
+                                                    placeholder="enter accountNo.." 
+                                                    autocomplete="beneficiaryName"
+                                                    formControlName="beneficiaryName"
+                                                    [readonly]="true"
+                                                />
+                                            </div>
+                                        </div>
+                                    </mat-card-content>
+                                </mat-card>
+                                <mat-card style="margin-top: 10px;">
+                                    <mat-card-subtitle style="margin-left: 10px;margin-top: 7px;"><strong>Informative markets</strong></mat-card-subtitle>
+                                    <mat-card-content>
+                                        
+                                        <div class='row'>
+                                            <div class="form-group col-12">
+                                                <label >Customer Informative market description</label>
+                                                <textarea type='text' 
+                                                    class='form-control'
+                                                    formControlName='custInfoMkr'
+                                                    [readonly]="true"
+                                                >
+                                                </textarea> 
+                                            </div>
+                                        </div>
+                                        <div class='row'>
+                                            <div class="form-group col-12">
+                                                <label >Account Informative market description</label>
+                                                <textarea type='text' 
+                                                    class='form-control'
+                                                    formControlName='accountInfoMkr'
+                                                    [readonly]="true"
+                                                >
+                                                </textarea> 
+                                            </div>
+                                        </div>
+                                    </mat-card-content>
+                                </mat-card>
+                                <mat-card style="margin-top: 10px;">
+                                    <mat-card-subtitle style="margin-left: 10px;margin-top: 7px;"><strong>Call Back Info</strong></mat-card-subtitle>
+                                    <mat-card-content>
+                                         <div class='row'>
+                                            <div class="form-group col-12">
+                                                <label >OutCome</label>
+                                                <ng-select
+                                                    [items]="outcomeOptions"  
+                                                                bindValue="id" 
+                                                                bindLabel="name" 
+                                                                formControlName="outcomeSelect"
+                                                                placeholder="Select email"
+                                                                [readonly]="true"
+                                                >
+                                                </ng-select>
+                                            </div>
+                                        </div>
+                                        <div class='row'>
+                                            <div class="form-group col-6">
+                                                <label >Extension</label>
+                                                <input 
+                                                    type="text"
+                                                    name="extension" 
+                                                    class="form-control"
+                                                    placeholder="enter extension.." 
+                                                    autocomplete="extension"
+                                                    formControlName="extension"
+                                                    [readonly]="true"
+                                                />
+                                            </div>
+                                            <div class="form-group col-6">
+                                                <label >Contact Person</label>
+                                                <input 
+                                                    type="text"
+                                                    name="contactPerson" 
+                                                    class="form-control"
+                                                    placeholder="enter contactPerson.." 
+                                                    autocomplete="contactPerson"
+                                                    formControlName="contactPerson"
+                                                    [readonly]="true"
+                                                />
+                                            </div>
+                                        </div>
+                                        <div class='row'>
+                                            <div class="form-group col-6">
+                                                <label >Customer Called On</label>
+                                                <input 
+                                                    type="text"
+                                                    name="customerCalledOn" 
+                                                    class="form-control"
+                                                    placeholder="enter customerCalledOn.." 
+                                                    autocomplete="customerCalledOn"
+                                                    formControlName="customerCalledOn"
+                                                    [readonly]="true"
+                                                />
+                                            </div>
+                                        </div>
+                                        <div class="form-group col-12">
+                                            <label >Comment</label>
+                                            <textarea type='text' 
+                                                class='form-control'
+                                                formControlName='comment'
+                                                [readonly]="true"
+                                            >
+                                            </textarea> 
+                                        </div>
+                                    </mat-card-content>
+                                </mat-card>
+                            </form>
+                        </mat-card-content>
+                    </mat-card>
+                
+                </div>
+                <div class="col-6">
+                    <h2> Pdf view simple usage</h2>
+                    <div id="outerContainer">
+                        <div class="pdf-container">
+                            <pdf-viewer
+                            [src]="src"
+                            [rotation]="0"
+                            [original-size]="false"
+                            [show-all]="true"
+                            [fit-to-page]="false"
+                            [zoom]="1"
+                            [zoom-scale]="'page-width'"
+                            [stick-to-page]="false"
+                            [render-text]="true"
+                            [external-link-target]="'blank'"
+                            [autoresize]="true"
+                            [show-borders]="false"
+                            style="width: 100%; height: 1200px;"
+                            ></pdf-viewer>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        
+        </mat-card-content>
+    </mat-card>
+</div>
+</div>
